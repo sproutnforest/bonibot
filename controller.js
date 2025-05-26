@@ -1,6 +1,5 @@
 const app = angular.module('myApp', []);
 const AuthorizationToken = angular.process.env.AUTHORIZATION_TOKEN
-console.log(AuthorizationToken);
 
 app.controller('MyController', function($scope, $http) {
   $scope.chatInput = "";
