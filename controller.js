@@ -1,4 +1,6 @@
 const app = angular.module('myApp', []);
+const AuthorizationToken = angular.process.env.AUTHORIZATION_TOKEN
+console.log(AuthorizationToken);
 
 app.controller('MyController', function($scope, $http) {
   $scope.chatInput = "";
@@ -23,7 +25,7 @@ app.controller('MyController', function($scope, $http) {
       url: 'https://grub-robust-positively.ngrok-free.app/webhook/463f793b-84f0-4290-b6bf-cf25963ac597',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'LabiraRiset'
+        'Authorization': AuthorizationToken
       },
       data: {
         chatInput: textinput
