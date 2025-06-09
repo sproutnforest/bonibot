@@ -11,6 +11,6 @@ app.controller('SubjectMenuController', function($scope, $http) {
     }
     $scope.continue = function() {
         const selected = $scope.selectedSubject;
-        window.location.href="/modelj?name=" + name + "&grade=" + grade + "&subject=" + selected
+        window.location.href="/modelk?name=" + name + "&grade=" + grade + "&subject=" + selected
     }
 });
