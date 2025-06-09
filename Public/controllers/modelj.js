@@ -69,10 +69,18 @@ app.controller('MyController', function($scope, $http) {
       text: botResponses 
     });
 
+    finaltext = "";
+
+    if(output.output.most_relevant_answer === 'rag'){
+      finaltext = ragArray[0]
+    } else {
+      finaltext = output.output.final_output
+    };
+
     $scope.items.push({
       sender: 'botFinal',
-      text: output.output.final_output
-    })
+      text: finaltext
+    });
 
     $scope.mostRelevant = output.output.final_output;
 
