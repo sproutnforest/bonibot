@@ -14,7 +14,8 @@ app.controller('ModelKController', function($scope, $http) {
   }
   $scope.chatInput = "";
   $scope.items = [];
-  const boturl = 'https://bonibot.vibindo.com/api/chat';
+  // const boturl = 'https://bonibot.vibindo.com/api/chat';
+  const boturl = 'https://bebonibot.vibindo.com';
 
   console.log("Hi!");
 
