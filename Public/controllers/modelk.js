@@ -14,7 +14,7 @@ app.controller('ModelKController', function($scope, $http) {
   }
   $scope.chatInput = "";
   $scope.items = [];
-  const boturl = 'http://103.75.25.77:3001/api/chat';
+  const boturl = 'http://localhost:3001/';
 
   console.log("Hi!");
 

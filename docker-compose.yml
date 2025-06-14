@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo:7
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=bonibot
+      - MONGO_INITDB_ROOT_PASSWORD=LabiraRiset
+    command: mongod --wiredTigerCacheSizeGB 0.5
+    privileged: true
+    ulimits:
+      nproc: 64000
+      nofile:
+        soft: 64000
+        hard: 64000
+
+  bonibot:
+    build: .
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://bonibot:LabiraRiset@mongo:27017/bonibot_data?authSource=admin
+    ports:
+      - "8301:3001"
+      - "8551:5502"
+    restart: always
+    ulimits:
+      nproc: 64000
+      nofile:
+        soft: 64000
+        hard: 64000
+
+volumes:
+  mongo-data:
+    driver: local
