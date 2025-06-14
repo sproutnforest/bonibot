@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.post('/api/chat', async (req, res) => {
   try {
-    const response = await axios.post('http://monkey-helped-wildly.ngrok-free.app/', req.body, {
+    const response = await axios.post('https://bebonibot.vibindo.com', req.body, {
       headers: {
         'Content-Type': 'application/json',
       }
