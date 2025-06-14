@@ -14,7 +14,7 @@ app.controller('ModelKController', function($scope, $http) {
   }
   $scope.chatInput = "";
   $scope.items = [];
-  const boturl = 'http://103.75.25.77:8301/api/chat';
+  const boturl = 'https://bonibot.vibindo.com/api/chat';
 
   console.log("Hi!");
 
@@ -57,7 +57,7 @@ app.controller('ModelKController', function($scope, $http) {
       answer: $scope.result
     }
 
-    $http.post('http://103.75.25.77:3001/addData', addData)
+    $http.post('https://bonibot.vibindo.com/addData', addData)
     .then(function(response) {
       console.log('Data added:', response.data);
     })
