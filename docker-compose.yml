@@ -20,7 +20,7 @@ services:
   bonibot-server:
     build:
       context: .
-      dockerfile: Dockerfile.server
+      dockerfile: server.Dockerfile
     depends_on:
       - mongo
     environment:
@@ -37,7 +37,7 @@ services:
   bonibot-app:
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: app.Dockerfile
     depends_on:
       - mongo
     environment:
