@@ -31,7 +31,7 @@ app.get('/health', (req, res) => {
 });
 
 // Forwarding route
-app.post('/', async (req, res) => {
+app.post('/api/chat', async (req, res) => {
   try {
     const response = await axios.post('https://bebonibot.vibindo.com', req.body, {
       headers: { 'Content-Type': 'application/json' },
