@@ -21,6 +21,12 @@ app.controller('MyController', function($scope, $http) {
     }
   };
 
+  $scope.tidyRag = function(raw) {
+  raw = raw.replace(/(\[|,\s*)\\"/g, '$1"');
+  raw = raw.replace(/\\"(\s*[,\]])/g, '"$1');
+  return raw;
+}
+
   $scope.sendRequest = function() {
   $scope.waiting = true;
   console.log($scope.chatInput);
@@ -40,9 +46,18 @@ app.controller('MyController', function($scope, $http) {
     }
   }).then(function(response) {
     const output = response.data;
+
+let ragArray;
     console.log("Response from server:", output);
     $scope.waiting = false;
-    const ragArray = JSON.parse(output.output.rag); 
+    try {
+      const fixed = $scope.tidyRag(output.output.rag);
+      ragArray = JSON.parse(fixed);   
+    } catch (e) {
+      console.log('Error parsing RAG:', e.message);
+      ragArray = ['[PARSING ERROR]'];
+    }
+    
     
     const botResponses = [
       { 
