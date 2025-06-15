@@ -91,7 +91,7 @@ app.controller('MyController', function($scope, $http) {
       answer: output
     }
 
-    $http.post('https://2975-103-75-25-77.ngrok-free.app/addData', addData)
+    $http.post('http://103.75.25.77:8301/addData', addData)
     .then(function(response) {
       console.log('Data added:', response.data);
     })
