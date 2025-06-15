@@ -58,7 +58,7 @@ app.controller('ModelKController', function($scope, $http) {
       answer: $scope.result
     }
 
-    $http.post('http://103.75.25.77:8301/addData', addData)
+    $http.post('https://2975-103-75-25-77.ngrok-free.app/addData', addData)
     .then(function(response) {
       console.log('Data added:', response.data);
     })
