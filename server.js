@@ -52,12 +52,12 @@ app.post('/addData', async (req, res) => {
   }
 })
 
-app.post('/viewData', async (req, res) => {
+app.get('/viewData', async (req, res) => {
   try {
     await client.connect();
     const database = client.db('bonibot_data');
     const chatCollection = database.collection('chat_data');
-    const data = await collection.find().toArray();
+    const data = await chatCollection.find().toArray();
     res.status(200).json(data);
   } catch (error) {
     console.error("Error inserting data:", error);
