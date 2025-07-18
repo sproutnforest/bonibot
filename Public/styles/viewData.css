@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color:  #7B452A;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  z-index: 10;
+  background-color: #E6DBC9;
+  color:  #7B452A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo2 {
+  font-weight: 300;
+}
+
+#logoimg {
+  width: 60px;
+  height: 60px;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-weight: 600;
+  color:#f3f3f3
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #f3f3f3;        /* Light gray background */
+  border-top: 5px solid #3498db;    /* Blue spinning part */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto; /* Center horizontally */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.table-container {
+  margin: 5px 50px;
+  text-align: center;
+}
+
+table.table thead.table-head tr th {
+  background-color: #7B452A  !important;
+  color: white !important;
+  vertical-align: middle;
+}
+
+table.table tbody.table-body tr td {
+  background-color: #E6DBC9 !important;
+  color: #7B452A !important;
+  vertical-align: middle;
+}
+
+.export{
+  background-color: #7B452A;
+  color: white;
+  margin: 25px 50px 0px 0px;
+}
+
+.export:hover {
+  background-color: #E6DBC9;
+  color: #7B452A;
+}

@@ -21,8 +21,28 @@ app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname,'Public', 'views', 'register.html'));
 })
 
+app.get('/teacherregister', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'teacherregister.html'));
+})
+
+app.get('/teacherlogin', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'teacherlogin.html'));
+})
+
+app.get('/teachermenu', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'teachermenu.html'));
+})
+
 app.get('/subjectmenu', (req, res) => {
     res.sendFile(path.join(__dirname,'Public', 'views', 'subjectmenu.html'));
+})
+
+app.get('/viewData', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'viewData.html'));
+})
+
+app.get('/evaluation', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'evaluation.html'));
 })
 
 app.listen(port, '0.0.0.0',() => {

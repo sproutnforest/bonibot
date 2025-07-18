@@ -16,7 +16,7 @@ app.controller('RegisterController', function($scope, $http) {
             alert("Tolong isi nama dan kelas kamu dulu yaa");
         }
         else{
-            if(Number($scope.grade)>6 || Number($scope.grade)<1){
+            if(isNaN($scope.grade)){
                 alert("Tolong isi kelas kamu dengan benar yaa, kelas 1-6!")
             }
             else{

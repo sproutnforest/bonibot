@@ -1,6 +1,13 @@
 const app = angular.module('myApp', []);
 
 app.controller('MyController', function($scope, $http) {
+  const { createClient } = supabase;
+
+  const SUPABASE_URL = 'https://jcniptzztdbcgdbngbzy.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpjbmlwdHp6dGRiY2dkYm5nYnp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyMjIwNjAsImV4cCI6MjA2Nzc5ODA2MH0.a0l_6vRFyNsINPiYFV28f0pzoj_KUOSsWMV0mt5YsAg';
+
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+
   $scope.waiting = false;
   $scope.chatInput = "";
   $scope.items = [];
@@ -38,11 +45,10 @@ app.controller('MyController', function($scope, $http) {
     data: {
       chatInput: textinput
     }
-  }).then(function(response) {
+  }).then(async function(response) {
     const output = response.data;
     console.log("Response from server:", output);
     $scope.waiting = false;
-    const ragArray = JSON.parse(output.output.rag); 
     
     const botResponses = [
       { 
@@ -52,7 +58,7 @@ app.controller('MyController', function($scope, $http) {
       },
       { 
         label: 'RAG',
-        text: ragArray[0],
+        text: output.output.rag,
         isRelevant: output.output.most_relevant_answer === 'rag'
       },
       {        
@@ -86,27 +92,25 @@ app.controller('MyController', function($scope, $http) {
 
     const addData = {
       student: student,
-      grade: grade,
+      grade: Number(grade),
       question: textinput,
       answer: output
     }
 
-    $http.post('https://apibonibot.vibindo.com/addData', addData)
-    .then(function(response) {
-      console.log('Data added:', response.data);
-    })
-    .catch(function(error) {
-      console.error('Error adding data:', error);
-    });
+  const { data, error } = await supabaseClient
+          .from('questions_student') 
+          .insert([addData]);
 
-  }, function(error) {
-    console.error("Request failed:", error);
-    $scope.items.push({
-      sender: 'bot',
-      text: ["Maaf, terjadi kesalahan", "Silakan coba lagi", "Hubungi admin jika terus error"]
+        if (error) {
+          console.error('Insert error:', error);
+        } else {
+          console.log('Insert success:', data);
+        }
+
+        $scope.$apply(() => {
+          $scope.waiting = false;
+        });
     });
-    $scope.waiting = false;
-  });
-};
+  };
 
 });
