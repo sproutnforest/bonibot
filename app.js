@@ -46,5 +46,5 @@ app.get('/evaluation', (req, res) => {
 })
 
 app.listen(port, '0.0.0.0',() => {
-  console.log(`App running at https://103.75.25.77:${port}`);
+  console.log(`App running at http://103.75.25.77:${port}`);
 });
