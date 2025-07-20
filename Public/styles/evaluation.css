@@ -163,3 +163,16 @@ a {
   }
 }
 
+.toast-success {
+  background-color: #7B452A; /* Green */
+}
+
+.toast-warning {
+  background-color: #DAAD60; /* Yellow/Orange */
+}
+
+.toast-error {
+  background-color: #d9534f; /* Red */
+}
+
+

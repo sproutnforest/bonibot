@@ -1,6 +1,9 @@
 const app = angular.module('myApp', []);
 
 app.controller('EvaluationController', function($scope, $http) {
+  $scope.toastMessage = "";
+  $scope.toastClass = "";
+
   const teacherName = localStorage.getItem('bonibotTeacherName');
   if(!teacherName){
     window.location.href = '/teacherlogin';
@@ -73,6 +76,7 @@ app.controller('EvaluationController', function($scope, $http) {
   });
 
   $scope.waiting = false;
+  showToast('Tolong pilih salah satu jawaban yang paling cocok untuk anda!', 'toast-success');
 })
 .catch(function(error) {
         $scope.waiting = false;
@@ -106,6 +110,7 @@ const addData = {
           alert('Insert error:' + error);
         } else {
             $scope.chosen = true;
+            showToast('Pilihan berhasil disimpan!', 'toast-success');
             $scope.$apply();
         }
   $scope.chosen = true;
@@ -116,5 +121,17 @@ $scope.logout = function() {
     localStorage.removeItem('bonibotTeacherName');
     window.location.href = '/teacherlogin';
 };
+
+function showToast(message, className) {
+  $scope.toastMessage = message;
+  $scope.toastClass = className || 'toast-success';
+
+  const toastEl = document.getElementById('toastNotify');
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+
+  $scope.$applyAsync();
+}
+
 
 });
