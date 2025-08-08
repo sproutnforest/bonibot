@@ -76,12 +76,8 @@ app.controller('MyController', function($scope, $http) {
     });
 
     finaltext = "";
+    finaltext = output.output.final_output;
 
-    if(output.output.most_relevant_answer === 'rag'){
-      finaltext = ragArray[0]
-    } else {
-      finaltext = output.output.final_output
-    };
 
     $scope.items.push({
       sender: 'botFinal',
