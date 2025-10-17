@@ -13,9 +13,17 @@ app.get('/modelj', (req, res) => {
     res.sendFile(path.join(__dirname,'Public', 'views', 'modelj.html'));
 });
 
-app.get('/modelk', (req, res) => {
-    res.sendFile(path.join(__dirname,'Public', 'views', 'modelk.html'));
-})
+app.get('/modelpkn', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'modelpkn.html'));
+});
+
+app.get('/modelcombined', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'modelcombined.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname,'Public', 'views', 'about.html'));
+});
 
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname,'Public', 'views', 'register.html'));
@@ -31,10 +39,6 @@ app.get('/teacherlogin', (req, res) => {
 
 app.get('/teachermenu', (req, res) => {
     res.sendFile(path.join(__dirname,'Public', 'views', 'teachermenu.html'));
-})
-
-app.get('/subjectmenu', (req, res) => {
-    res.sendFile(path.join(__dirname,'Public', 'views', 'subjectmenu.html'));
 })
 
 app.get('/viewData', (req, res) => {

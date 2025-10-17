@@ -20,11 +20,14 @@ app.controller('RegisterController', function($scope, $http) {
                 alert("Tolong isi kelas kamu dengan benar yaa, kelas 1-6!")
             }
             else{
-                if(model==="2"){
-                    window.location.href="/subjectmenu?name=" + $scope.name + "&grade=" + $scope.grade 
-                }
-                else{
+                if(model==="1"){
                     window.location.href="/modelj?name=" + $scope.name + "&grade=" + $scope.grade
+                }
+                else if(model==="2"){
+                    window.location.href="/modelpkn?name=" + $scope.name + "&grade=" + $scope.grade 
+                }
+                else if(model==="3"){
+                    window.location.href="/modelcombined?name=" + $scope.name + "&grade=" + $scope.grade 
                 }
             }
         }
